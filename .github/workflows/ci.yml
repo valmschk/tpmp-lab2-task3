@@ -1,0 +1,12 @@
+name: C Build
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Build with Make
+        run: make
+      - name: Run Test
+        run: echo -e "Ivanov\n1\n5 5 5 5 5\nPetrov\n1\n3 3 3 3 3\nSidorov\n1\n2 2 2 2 2" | ./prog

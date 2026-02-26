@@ -22,18 +22,11 @@ void print_high_achievers(STUDENT *students, int n) {
     double overall_avg = total_sum / (n * 5);
 
     printf("\nOverall average: %.2f\n", overall_avg);
-    printf("Students above average:\n");
-
-    int found = 0;
     for (int i = 0; i < n; i++) {
-        double student_avg = 0;
-        for (int j = 0; j < 5; j++) student_avg += students[i].ses[j];
-        student_avg /= 5;
-
-        if (student_avg > overall_avg) {
-            printf("%s (Avg: %.2f)\n", students[i].name, student_avg);
-            found = 1;
+        double s_avg = 0;
+        for (int j = 0; j < 5; j++) s_avg += students[i].ses[j];
+        if ((s_avg / 5) > overall_avg) {
+            printf("Above average student: %s\n", students[i].name);
         }
     }
-    if (!found) printf("No students found.\n");
 }
